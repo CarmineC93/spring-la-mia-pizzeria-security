@@ -17,7 +17,7 @@ public class DatabaseUserDetails implements UserDetails {
     private String password;
     private Set<GrantedAuthority> authorities;
 
-    //CONSTRUCTOR in which we fill the autorithies Set
+    //CONSTRUCTOR in which to fill the autorithies Set
     public DatabaseUserDetails(User user) {
         this.username = user.getEmail();
         this.password = user.getPassword();

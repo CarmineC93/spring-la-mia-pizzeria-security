@@ -26,6 +26,7 @@
 
         </ul>
 
+
         <!--con il form farà una richiesta get a rotta pizzas, assocerà l'attribute name e ricaricherà la pagina-->
         <form class="d-flex"
               th:if="${showSearch}"
@@ -37,6 +38,12 @@
           <input name="q" th:value="${keyword}" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+
+        <div class="ms-3">
+          <span sec:authentication="name"></span>
+          <a class="btn btn-danger" th:href="@{/logout}">Logout</a>
+        </div>
+
       </div>
     </div>
   </nav>
