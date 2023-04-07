@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
   <div th:replace="~{fragments/link :: link}"></div>
@@ -37,7 +37,7 @@
 
     <h6>Special Offer</h6>
     <a th:href="@{/special-offers/create(pizzaId=${pizza.id})}"
-        class="btn btn-success">Add new Offer</a>
+        class="btn btn-success" sec:authorize="hasAuthority('ADMIN')">Add new Offer</a>
 
 
     <table class="table">
