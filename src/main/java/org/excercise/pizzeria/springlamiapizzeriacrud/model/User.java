@@ -4,10 +4,13 @@ package org.excercise.pizzeria.springlamiapizzeriacrud.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "users")
 public class User {
 
+    //ATTRIBUTES / COLUMNS
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -21,6 +24,20 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    //RELATIONS
+    @ManyToMany(fetch = FetchType.EAGER) //usiamo fetch in modo che appena venga selezionato un utente devono vengano subito selezionati i suoi ruoli
+    private Set<Role> roles;
+
+
+    //GETTER & SETTER
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;
