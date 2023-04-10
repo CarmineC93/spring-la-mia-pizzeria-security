@@ -32,6 +32,9 @@ public class Pizza {
     @OneToMany(mappedBy = "pizza")
     private List<SpecialOffer> specialOffers;
 
+    @ManyToOne
+    private User user;
+
     @ManyToMany
     @JoinTable(
             name = "pizza_ingredient",
@@ -46,6 +49,15 @@ public class Pizza {
     }
 
     //GETTER & SETTER
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public List<Ingredient> getIngredients() {
         return ingredients;

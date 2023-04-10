@@ -18,7 +18,6 @@ public class Role {
 
     //GETTER & SETTER
 
-
     public Integer getId() {
         return id;
     }

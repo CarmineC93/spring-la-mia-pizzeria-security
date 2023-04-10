@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <th:block th:replace="/fragments/link :: link"></th:block>
+  <th:block th:replace="~{/fragments/link :: link}"></th:block>
   <title>Ingredients</title>
 </head>
 <body>
-<th:block th:replace="/fragments/navbar :: navbar('ingredients', '', false)"></th:block>
+
+
+<th:block th:replace="~{/fragments/navbar :: navbar('pizzas', '', false)}"></th:block>
 <div class="container">
   <h1>Ingredients</h1>
   <!-- leggo la variabile message (flashAttribute) -->
@@ -22,7 +24,7 @@
           <h5 th:text="${ingredient.name}"></h5>
           <p th:text="${ingredient.description}"></p>
           <a th:href="@{|/ingredients/edit/${ingredient.id}|}">Modify</a>
-    <!--<a th:href="@{|/pizzas/delete/*{id}|}">Delete</a>-->
+         <!--<a th:href="@{|/pizzas/delete/*{id}|}">Delete</a>-->
 
         </li>
       </ul>

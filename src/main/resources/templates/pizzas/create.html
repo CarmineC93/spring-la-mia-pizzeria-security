@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <th:block th:replace="/fragments/link :: link"></th:block>
+  <th:block th:replace="~{/fragments/link :: link}"></th:block>
   <title>New pizza</title>
 </head>
 <body>
-<th:block th:replace="/fragments/navbar :: navbar('pizzas', '', false)"></th:block>
+<th:block th:replace="~{/fragments/navbar :: navbar('pizzas', '', false)}"></th:block>
 <div class="container">
   <h1>New pizza</h1>
+
+
   <form id="pizza-form" method="post" th:object="${pizza}" th:action="@{/pizzas/create}"
         class="row gy-3">
     <!-- Errors -->
