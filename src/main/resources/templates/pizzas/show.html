@@ -18,19 +18,28 @@
     <hr/>
     <div>
         <dl>
-            <dt>Name</dt>
+            <dt>Name:</dt>
             <dd th:text="*{name}"></dd>
 
             <th:block th:unless="${#strings.isEmpty(pizza.description)}">
-                <dt>Description</dt>
+                <dt>Description:</dt>
                 <dd th:text="*{description}"></dd>
             </th:block>
 
-            <dt>Price</dt>
+            <dt>Price: </dt>
             <dd th:text="|*{price} €|"></dd>
 
-            <dt>Ingredients</dt>
+            <dt>Ingredients: </dt>
             <dd><span th:each="ingredient : *{ingredients}" th:text="${ingredient.name}" class="me-1"></span></dd>
+
+            <dt>Creator of this pizza: </dt>
+            <dd>
+
+                <span th:text="*{user.firstName}" class="me-1"></span>
+                <span th:text="*{user.lastName}" class="me-1"></span>
+
+            </dd>
+
         </dl>
     </div>
 

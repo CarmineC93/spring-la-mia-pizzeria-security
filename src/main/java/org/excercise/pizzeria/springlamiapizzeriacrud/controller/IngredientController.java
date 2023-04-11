@@ -49,9 +49,9 @@ public class IngredientController {
     }
 
     @PostMapping("/edit/{id}")
-    public String update(@Valid @ModelAttribute Ingredient ingredient, BindingResult bindingResult, Model model,
+    public String update(@Valid @ModelAttribute Ingredient ingredient, BindingResult bs, Model model,
                          @PathVariable Integer id) {
-        if (bindingResult.hasErrors()) {
+        if (bs.hasErrors()) {
             model.addAttribute("ingredients", ingredientService.getAll());
             return "ingredients/index";
         }
@@ -60,6 +60,10 @@ public class IngredientController {
         return "redirect:/ingredients";
     }
 
-
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        ingredientService.deleteById(id);
+        return "redirect:/ingredients";
+    }
 
 }

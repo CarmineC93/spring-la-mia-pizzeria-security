@@ -10,6 +10,7 @@ import org.excercise.pizzeria.springlamiapizzeriacrud.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -107,6 +108,7 @@ public class PizzaController {
             if(br.hasErrors()){
                 //per far lasciare i campi selezionati in caso di altri campi con errore e ricaricamento pagina
                 model.addAttribute("ingredientList", ingredientService.getAll());
+
                 return "/pizzas/create";
             }
 
@@ -143,6 +145,7 @@ public class PizzaController {
         @PostMapping("/edit/{id}")
         public String doEdit(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza, BindingResult bs, RedirectAttributes redirectAttributes, Model model){
             if(bs.hasErrors()){
+                System.out.println(bs);
                 model.addAttribute("ingredientList", ingredientService.getAll());
                 return "/pizzas/edit";
             }
@@ -150,6 +153,7 @@ public class PizzaController {
                 Pizza updatedPizza = pizzaService.updatePizza(formPizza, id);
                 redirectAttributes.addFlashAttribute("message", new CrudMessage(CrudMessage.CrudMessageType.SUCCESS, "Pizza " + id + " successfully updated"));
 
+                model.addAttribute("modifiedBy", ingredientService.getAll());
 
 
                 return "redirect:/pizzas/" + Integer.toString(updatedPizza.getId());

@@ -24,7 +24,7 @@
           <h5 th:text="${ingredient.name}"></h5>
           <p th:text="${ingredient.description}"></p>
           <a th:href="@{|/ingredients/edit/${ingredient.id}|}">Modify</a>
-         <!--<a th:href="@{|/pizzas/delete/*{id}|}">Delete</a>-->
+          <a th:href="@{|/ingredients/delete/${ingredient.id}|}">Delete</a>
 
         </li>
       </ul>
@@ -32,7 +32,11 @@
 
 
     <div class="col-6"
-         th:with="action=${ingredient.id == null ? '/ingredients' : '/ingredients/edit/' + ingredient.id }">
+         th:with="action=${ingredient.id == null ? '/ingredients/save' : '/ingredients/edit/' + ingredient.id }">
+
+      <h2
+              th:text="${ingredient.id == null} ? 'Create a new Ingredient' : 'Modify Ingredient'"></h2>
+
 
       <form
               id="ingredient-form"
@@ -65,6 +69,7 @@
           </div>
         </div>
         <div class="col-12">
+          <a th:href="@{/ingredients}" class="btn btn-warning">Cancel</a>
           <button type="submit" class="btn btn-primary">Save</button>
         </div>
       </form>

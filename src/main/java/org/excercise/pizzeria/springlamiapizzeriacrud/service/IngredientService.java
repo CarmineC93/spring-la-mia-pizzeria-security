@@ -28,10 +28,8 @@ public class IngredientService {
     }
 
     public Ingredient update(Ingredient formIngredient) {
-        Ingredient ingredientToUpdate = new Ingredient();
-        ingredientToUpdate.setName(formIngredient.getName());
-        ingredientToUpdate.setDescription(formIngredient.getDescription());
-        return ingredientRepository.save(ingredientToUpdate);
+
+        return ingredientRepository.save(formIngredient);
     }
 
     public Ingredient getById(Integer id) throws PizzaNotFoundException {
@@ -52,5 +50,7 @@ public class IngredientService {
             return false;
         }
     }
+
+
 
 }
